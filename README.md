@@ -1,3 +1,5 @@
+inspired by https://dribbble.com/shots/25680428-Weavy-Finance-Dashboard
+
 # Weavy Financial Dashboard
 
 A modern, responsive financial dashboard built with Next.js, React, TypeScript, and Tailwind CSS. This application provides a comprehensive view of financial data including balance tracking, spending analysis, card management, and currency exchange functionality.

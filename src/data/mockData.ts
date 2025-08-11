@@ -9,6 +9,220 @@ export interface SpendingCategory {
   size: 'large' | 'medium' | 'small';
 }
 
+export interface Currency {
+  code: string;
+  name: string;
+  flag: string;
+  symbol: string;
+}
+
+export interface ExchangeRate {
+  from: string;
+  to: string;
+  rate: number;
+  lastUpdated: Date;
+}
+
+export interface ExchangeHistory {
+  id: string;
+  fromCurrency: string;
+  toCurrency: string;
+  fromAmount: number;
+  toAmount: number;
+  exchangeRate: number;
+  feeAmount: number;
+  totalAmount: number;
+  timestamp: Date;
+  status: 'completed' | 'pending' | 'failed';
+}
+
+// Available currencies for exchange
+export const currencies: Currency[] = [
+  { code: 'USD', name: 'US Dollar', flag: '🇺🇸', symbol: '$' },
+  { code: 'EUR', name: 'Euro', flag: '🇪🇺', symbol: '€' },
+  { code: 'GBP', name: 'British Pound', flag: '🇬🇧', symbol: '£' },
+  { code: 'JPY', name: 'Japanese Yen', flag: '🇯🇵', symbol: '¥' },
+  { code: 'SGD', name: 'Singapore Dollar', flag: '🇸🇬', symbol: 'S$' },
+  { code: 'CAD', name: 'Canadian Dollar', flag: '🇨🇦', symbol: 'C$' },
+];
+
+// Mock exchange rates (in a real app, these would come from an API)
+export const exchangeRates: Record<string, Record<string, number>> = {
+  'USD': {
+    'EUR': 0.92,
+    'GBP': 0.79,
+    'JPY': 149.50,
+    'SGD': 1.35,
+    'CAD': 1.35,
+  },
+  'EUR': {
+    'USD': 1.09,
+    'GBP': 0.86,
+    'JPY': 162.50,
+    'SGD': 1.47,
+    'CAD': 1.47,
+  },
+  'GBP': {
+    'USD': 1.27,
+    'EUR': 1.16,
+    'JPY': 189.24,
+    'SGD': 1.71,
+    'CAD': 1.71,
+  },
+  'JPY': {
+    'USD': 0.0067,
+    'EUR': 0.0061,
+    'GBP': 0.0053,
+    'SGD': 0.0090,
+    'CAD': 0.0090,
+  },
+  'SGD': {
+    'USD': 0.74,
+    'EUR': 0.68,
+    'GBP': 0.58,
+    'JPY': 110.74,
+    'CAD': 1.00,
+  },
+  'CAD': {
+    'USD': 0.74,
+    'EUR': 0.68,
+    'GBP': 0.58,
+    'JPY': 110.74,
+    'SGD': 1.00,
+  },
+};
+
+// Default exchange settings
+export const defaultExchangeSettings = {
+  fromCurrency: currencies[0], // USD
+  toCurrency: currencies[1],   // EUR
+  feePercentage: 0.0118, // 1.18%
+};
+
+// Mock exchange history data
+export const exchangeHistory: ExchangeHistory[] = [
+  {
+    id: '1',
+    fromCurrency: 'USD',
+    toCurrency: 'EUR',
+    fromAmount: 1000,
+    toAmount: 920,
+    exchangeRate: 0.92,
+    feeAmount: 11.8,
+    totalAmount: 1011.8,
+    timestamp: new Date(Date.now() - 2 * 60 * 60 * 1000), // 2 hours ago
+    status: 'completed'
+  },
+  {
+    id: '2',
+    fromCurrency: 'EUR',
+    toCurrency: 'GBP',
+    fromAmount: 500,
+    toAmount: 430,
+    exchangeRate: 0.86,
+    feeAmount: 5.9,
+    totalAmount: 505.9,
+    timestamp: new Date(Date.now() - 4 * 60 * 60 * 1000), // 4 hours ago
+    status: 'completed'
+  },
+  {
+    id: '3',
+    fromCurrency: 'USD',
+    toCurrency: 'CAD',
+    fromAmount: 2500,
+    toAmount: 3375,
+    exchangeRate: 1.35,
+    feeAmount: 29.5,
+    totalAmount: 2529.5,
+    timestamp: new Date(Date.now() - 6 * 60 * 60 * 1000), // 6 hours ago
+    status: 'completed'
+  },
+  {
+    id: '4',
+    fromCurrency: 'GBP',
+    toCurrency: 'JPY',
+    fromAmount: 800,
+    toAmount: 151392,
+    exchangeRate: 189.24,
+    feeAmount: 9.44,
+    totalAmount: 809.44,
+    timestamp: new Date(Date.now() - 8 * 60 * 60 * 1000), // 8 hours ago
+    status: 'completed'
+  },
+  {
+    id: '5',
+    fromCurrency: 'SGD',
+    toCurrency: 'USD',
+    fromAmount: 1500,
+    toAmount: 1110,
+    exchangeRate: 0.74,
+    feeAmount: 17.7,
+    totalAmount: 1517.7,
+    timestamp: new Date(Date.now() - 12 * 60 * 60 * 1000), // 12 hours ago
+    status: 'completed'
+  },
+  {
+    id: '6',
+    fromCurrency: 'CAD',
+    toCurrency: 'EUR',
+    fromAmount: 3000,
+    toAmount: 2040,
+    exchangeRate: 0.68,
+    feeAmount: 35.4,
+    totalAmount: 3035.4,
+    timestamp: new Date(Date.now() - 18 * 60 * 60 * 1000), // 18 hours ago
+    status: 'completed'
+  },
+  {
+    id: '7',
+    fromCurrency: 'JPY',
+    toCurrency: 'USD',
+    fromAmount: 50000,
+    toAmount: 335,
+    exchangeRate: 0.0067,
+    feeAmount: 0.59,
+    totalAmount: 50000.59,
+    timestamp: new Date(Date.now() - 24 * 60 * 60 * 1000), // 1 day ago
+    status: 'completed'
+  },
+  {
+    id: '8',
+    fromCurrency: 'EUR',
+    toCurrency: 'SGD',
+    fromAmount: 1200,
+    toAmount: 1764,
+    exchangeRate: 1.47,
+    feeAmount: 14.16,
+    totalAmount: 1214.16,
+    timestamp: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000), // 2 days ago
+    status: 'completed'
+  },
+  {
+    id: '9',
+    fromCurrency: 'USD',
+    toCurrency: 'GBP',
+    fromAmount: 750,
+    toAmount: 592.5,
+    exchangeRate: 0.79,
+    feeAmount: 8.85,
+    totalAmount: 758.85,
+    timestamp: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000), // 3 days ago
+    status: 'completed'
+  },
+  {
+    id: '10',
+    fromCurrency: 'CAD',
+    toCurrency: 'JPY',
+    fromAmount: 1800,
+    toAmount: 199332,
+    exchangeRate: 110.74,
+    feeAmount: 21.24,
+    totalAmount: 1821.24,
+    timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), // 4 days ago
+    status: 'completed'
+  }
+];
+
 // Mock data for balance chart - more realistic daily fluctuations
 export const balanceData: BalanceData[] = [
   { date: 'Dec 12', balance: 21500 },

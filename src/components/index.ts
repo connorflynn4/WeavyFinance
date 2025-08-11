@@ -5,4 +5,5 @@ export { default as BalanceChart } from './BalanceChart';
 export { default as IncomeExpenseSummary } from './IncomeExpenseSummary';
 export { default as CardsSection } from './CardsSection';
 export { default as SpendingSummary } from './SpendingSummary';
-export { default as ExchangeSection } from './ExchangeSection'; 
+export { default as ExchangeSection } from './ExchangeSection';
+export { default as ExchangeHistory } from './ExchangeHistory'; 

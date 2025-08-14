@@ -19,7 +19,8 @@ const ExchangeSection = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [showFromDropdown, setShowFromDropdown] = useState(false);
   const [showToDropdown, setShowToDropdown] = useState(false);
-  const [lastUpdated, setLastUpdated] = useState<Date>(new Date());
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
+  const [hasMounted, setHasMounted] = useState(false);
 
   // Calculate exchange rate
   const getExchangeRate = useCallback((from: string, to: string): number => {
@@ -130,8 +131,9 @@ const ExchangeSection = () => {
     setIsLoading(false);
   };
 
-  // Update rates on mount and when currencies change
+  // Track mount and update rates on mount and when currencies change
   useEffect(() => {
+    setHasMounted(true);
     updateExchangeRate();
   }, [updateExchangeRate]);
 
@@ -171,7 +173,11 @@ const ExchangeSection = () => {
           </button>
         </div>
         <p className="text-xs text-gray-500 mt-1">
-          Last updated: {lastUpdated.toLocaleTimeString()}
+          Last updated: <span suppressHydrationWarning>{
+            hasMounted && lastUpdated
+              ? lastUpdated.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', second: '2-digit' })
+              : '—'
+          }</span>
         </p>
       </div>
 

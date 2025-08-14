@@ -1,40 +1,43 @@
 "use client";
 
+import { Bell, Search, ChevronDown, Calendar } from "lucide-react";
+
 const Header = () => {
   return (
-    <header className="bg-white shadow p-3 flex justify-between items-center">
+    <header className="bg-white border-b border-gray-200 px-4 py-3 flex justify-between items-center">
       <div>
-        <h1 className="text-xl font-bold text-gray-800">Dashboard</h1>
-        <div className="flex items-center text-gray-600 mt-0.5">
-          <span className="text-sm">Financial report for Feb 01, 2024 - Feb 28, 2024</span>
+        <div className="flex items-center gap-2 text-gray-900">
+          <h1 className="text-lg font-semibold">Dashboard</h1>
+          <span className="inline-flex items-center rounded-md bg-gray-100 px-2 py-0.5 text-xs text-gray-600">Overview</span>
+        </div>
+        <div className="flex items-center text-gray-500 mt-1 text-sm">
+          <Calendar className="w-4 h-4 mr-1.5" />
+          <span>Financial report for Feb 01, 2024 - Feb 28, 2024</span>
           <button className="ml-2 text-gray-500 hover:text-gray-700">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
+            <ChevronDown className="w-4 h-4" />
           </button>
         </div>
       </div>
 
-      <div className="flex items-center space-x-3">
-        <button className="text-gray-500 hover:text-gray-700">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </button>
-        <button className="text-gray-500 hover:text-gray-700 relative">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-          </svg>
-          <span className="absolute top-0 right-0 block h-2 w-2 rounded-full bg-red-500"></span>
+      <div className="flex items-center gap-3">
+        <div className="relative">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="pl-8 pr-3 py-1.5 rounded-md border border-gray-300 text-sm focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 placeholder:text-gray-400"
+          />
+          <Search className="w-4 h-4 text-gray-400 absolute left-2 top-1/2 -translate-y-1/2" />
+        </div>
+        <button className="relative rounded-full p-2 hover:bg-gray-100 text-gray-600">
+          <Bell className="w-5 h-5" />
+          <span className="absolute top-1 right-1 block h-2 w-2 rounded-full bg-red-500" />
         </button>
         <div className="flex items-center">
-          <div className="w-7 h-7 rounded-full bg-gray-300 flex items-center justify-center text-gray-700 font-bold mr-2 text-sm">
+          <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-700 font-semibold mr-2 text-sm">
             MP
           </div>
-          <button className="text-gray-500 hover:text-gray-700">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-            </svg>
+          <button className="text-gray-600 hover:text-gray-800">
+            <ChevronDown className="w-4 h-4" />
           </button>
         </div>
       </div>

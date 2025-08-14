@@ -36,6 +36,18 @@ export interface ExchangeHistory {
   status: 'completed' | 'pending' | 'failed';
 }
 
+export interface Transaction {
+  id: string;
+  date: string; // ISO date string
+  description: string;
+  merchant: string;
+  category: string;
+  type: 'income' | 'expense';
+  currency: string; // currency code like USD
+  amount: number; // positive number; sign based on type
+  status: 'completed' | 'pending' | 'failed';
+}
+
 // Available currencies for exchange
 export const currencies: Currency[] = [
   { code: 'USD', name: 'US Dollar', flag: '🇺🇸', symbol: '$' },
@@ -221,6 +233,20 @@ export const exchangeHistory: ExchangeHistory[] = [
     timestamp: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000), // 4 days ago
     status: 'completed'
   }
+];
+
+// Mock transactions
+export const transactions: Transaction[] = [
+  { id: 't1', date: '2024-02-28', description: 'Groceries at Wholefoods', merchant: 'Wholefoods Market', category: 'Groceries', type: 'expense', currency: 'USD', amount: 86.45, status: 'completed' },
+  { id: 't2', date: '2024-02-27', description: 'Salary February', merchant: 'Weavy Inc.', category: 'Salary', type: 'income', currency: 'USD', amount: 5400, status: 'completed' },
+  { id: 't3', date: '2024-02-26', description: 'Uber trip', merchant: 'Uber', category: 'Transport', type: 'expense', currency: 'USD', amount: 18.2, status: 'completed' },
+  { id: 't4', date: '2024-02-25', description: 'Coffee', merchant: 'Starbucks', category: 'Food & Drink', type: 'expense', currency: 'USD', amount: 5.35, status: 'completed' },
+  { id: 't5', date: '2024-02-24', description: 'Gym Membership', merchant: 'Anytime Fitness', category: 'Health', type: 'expense', currency: 'USD', amount: 39.99, status: 'completed' },
+  { id: 't6', date: '2024-02-22', description: 'Flight to NYC', merchant: 'Delta Airlines', category: 'Travel', type: 'expense', currency: 'USD', amount: 312.4, status: 'completed' },
+  { id: 't7', date: '2024-02-20', description: 'Freelance payout', merchant: 'Upwork', category: 'Freelance', type: 'income', currency: 'USD', amount: 800, status: 'completed' },
+  { id: 't8', date: '2024-02-18', description: 'Internet Bill', merchant: 'Comcast', category: 'Utilities', type: 'expense', currency: 'USD', amount: 69.99, status: 'completed' },
+  { id: 't9', date: '2024-02-17', description: 'Restaurant', merchant: 'Chipotle', category: 'Food & Drink', type: 'expense', currency: 'USD', amount: 22.1, status: 'completed' },
+  { id: 't10', date: '2024-02-14', description: 'Refund - shoes', merchant: 'Nike', category: 'Refunds', type: 'income', currency: 'USD', amount: 79.99, status: 'completed' },
 ];
 
 // Mock data for balance chart - more realistic daily fluctuations

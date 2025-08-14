@@ -135,7 +135,7 @@ const BalanceChart = ({ balanceData }: BalanceChartProps) => {
   };
 
   return (
-    <div className="lg:col-span-2 bg-white rounded-xl shadow p-4">
+    <div className="lg:col-span-2 bg-white rounded-xl shadow p-4 h-full">
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-bold text-gray-800">Balance</h3>
         <div className="flex space-x-2">

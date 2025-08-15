@@ -64,13 +64,13 @@ const SidebarComponent = ({ onViewChange, activeView, isMobileMenuOpen, onMobile
         {/* Navigation Menu */}
         <nav className="flex-1 px-3 lg:px-4 py-2 lg:py-4 min-h-0">
           {/* Main Menu */}
-          <div className="mb-3 lg:mb-6">
-            <h3 className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2 lg:mb-3">Main Menu</h3>
-            <ul className="space-y-1 lg:space-y-2">
+          <div className="mb-3">
+            <h3 className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2">Main Menu</h3>
+            <ul className="space-y-1">
               <li>
                 <button
                   onClick={() => handleNavClick('dashboard')}
-                  className={`w-full flex items-center px-2 lg:px-3 py-2 lg:py-3 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  className={`w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                     activeView === 'dashboard'
                       ? 'bg-teal-600 text-white'
                       : 'text-gray-300 hover:bg-gray-800 hover:text-white'
@@ -83,7 +83,7 @@ const SidebarComponent = ({ onViewChange, activeView, isMobileMenuOpen, onMobile
               <li>
                 <button
                   onClick={() => handleNavClick('cards')}
-                  className={`w-full flex items-center px-2 lg:px-3 py-2 lg:py-3 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  className={`w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                     activeView === 'cards'
                       ? 'bg-teal-600 text-white'
                       : 'text-gray-300 hover:bg-gray-800 hover:text-white'
@@ -96,7 +96,7 @@ const SidebarComponent = ({ onViewChange, activeView, isMobileMenuOpen, onMobile
               <li>
                 <button
                   onClick={() => handleNavClick('transactions')}
-                  className={`w-full flex items-center px-2 lg:px-3 py-2 lg:py-3 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  className={`w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                     activeView === 'transactions'
                       ? 'bg-teal-600 text-white'
                       : 'text-gray-300 hover:bg-gray-800 hover:text-white'
@@ -107,13 +107,13 @@ const SidebarComponent = ({ onViewChange, activeView, isMobileMenuOpen, onMobile
                 </button>
               </li>
               <li>
-                <button className="w-full flex items-center px-2 lg:px-3 py-2 lg:py-3 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200">
+                <button className="w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200">
                   <Wallet className="w-4 h-4 mr-2 lg:mr-3" />
                   Cash Flow
                 </button>
               </li>
               <li>
-                <button className="w-full flex items-center px-2 lg:px-3 py-2 lg:py-3 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200">
+                <button className="w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200">
                   <ClipboardList className="w-4 h-4 mr-2 lg:mr-3" />
                   Budget
                 </button>
@@ -121,7 +121,7 @@ const SidebarComponent = ({ onViewChange, activeView, isMobileMenuOpen, onMobile
               <li>
                 <button
                   onClick={() => handleNavClick('goals')}
-                  className={`w-full flex items-center px-2 lg:px-3 py-2 lg:py-3 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  className={`w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                     activeView === 'goals'
                       ? 'bg-teal-600 text-white'
                       : 'text-gray-300 hover:bg-gray-800 hover:text-white'
@@ -135,13 +135,13 @@ const SidebarComponent = ({ onViewChange, activeView, isMobileMenuOpen, onMobile
           </div>
 
           {/* Investments */}
-          <div className="mb-3 lg:mb-6">
-            <h3 className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2 lg:mb-3">Investments</h3>
-            <ul className="space-y-1 lg:space-y-2">
+          <div className="mb-3">
+            <h3 className="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2">Investments</h3>
+            <ul className="space-y-1">
               <li>
                 <button
                   onClick={() => handleNavClick('investments')}
-                  className={`w-full flex items-center px-2 lg:px-3 py-2 lg:py-3 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  className={`w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                     activeView === 'investments'
                       ? 'bg-teal-600 text-white'
                       : 'text-gray-300 hover:bg-gray-800 hover:text-white'
@@ -154,7 +154,7 @@ const SidebarComponent = ({ onViewChange, activeView, isMobileMenuOpen, onMobile
               <li>
                 <button
                   onClick={() => handleNavClick('exchanges')}
-                  className={`w-full flex items-center px-2 lg:px-3 py-2 lg:py-3 rounded-md text-sm font-medium transition-colors duration-200 ${
+                  className={`w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
                     activeView === 'exchanges'
                       ? 'bg-teal-600 text-white'
                       : 'text-gray-300 hover:bg-gray-800 hover:text-white'
@@ -169,16 +169,16 @@ const SidebarComponent = ({ onViewChange, activeView, isMobileMenuOpen, onMobile
         </nav>
 
         {/* Footer */}
-        <div className="px-3 lg:px-4 py-2 lg:py-3 border-t border-gray-700 flex-shrink-0">
-          <ul className="space-y-1 lg:space-y-2">
+        <div className="px-3 lg:px-4 py-2 border-t border-gray-700 flex-shrink-0">
+          <ul className="space-y-1">
             <li>
-              <button className="w-full flex items-center px-2 lg:px-3 py-2 lg:py-3 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200">
+              <button className="w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200">
                 <SettingsIcon className="w-4 h-4 mr-2 lg:mr-3" />
                 Settings
               </button>
             </li>
             <li>
-              <button className="w-full flex items-center px-2 lg:px-3 py-2 lg:py-3 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200">
+              <button className="w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200">
                 <HelpCircle className="w-4 h-4 mr-2 lg:mr-3" />
                 Help & Support
               </button>

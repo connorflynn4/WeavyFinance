@@ -90,6 +90,15 @@ const FinancialDashboard = () => {
 
           {activeView === 'goals' && <GoalsPage />}
         </main>
+
+        {/* Footer */}
+        <footer className="bg-white border-t border-gray-200 mt-auto">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <p className="text-gray-500 text-sm text-center">
+              © 2025 Weavy Finance. All rights reserved.
+            </p>
+          </div>
+        </footer>
       </div>
     </div>
   );

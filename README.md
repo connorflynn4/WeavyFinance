@@ -9,7 +9,7 @@ A modern financial dashboard built with Next.js, React, TypeScript, and Tailwind
 - Balance tracking with interactive charts
 - Income & expense summaries
 - Credit card management
-- Currency exchange (IDR to USD)
+- Currency exchange 
 - Responsive design
 
 ## Tech Stack

@@ -15,11 +15,13 @@ import {
   TransactionsPage,
   InvestmentsPage,
   GoalsPage,
+  CashFlowPage,
+  BudgetPage,
 } from './components';
 
 import { balanceData, spendingCategories } from './data/mockData';
 
-type View = 'dashboard' | 'exchanges' | 'cards' | 'transactions' | 'investments' | 'goals';
+type View = 'dashboard' | 'exchanges' | 'cards' | 'transactions' | 'investments' | 'goals' | 'cashflow' | 'budget';
 
 const FinancialDashboard = () => {
   const [activeView, setActiveView] = useState<View>('dashboard');
@@ -89,7 +91,11 @@ const FinancialDashboard = () => {
           {activeView === 'investments' && <InvestmentsPage />}
 
           {activeView === 'goals' && <GoalsPage />}
-        </main>
+
+        {activeView === 'cashflow' && <CashFlowPage />}
+
+        {activeView === 'budget' && <BudgetPage />}
+      </main>
 
         {/* Footer */}
         <footer className="bg-white border-t border-gray-200 mt-auto">

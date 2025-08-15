@@ -6,7 +6,15 @@ export interface BalanceData {
 export interface SpendingCategory {
   name: string;
   amount: number;
-  size: 'large' | 'medium' | 'small';
+  percentage: number;
+  color: string;
+}
+
+export interface BudgetCategory {
+  id: string;
+  name: string;
+  budget: number;
+  spent: number;
 }
 
 export interface Currency {
@@ -340,4 +348,38 @@ export const spendingCategories: SpendingCategory[] = [
   { name: 'Food', amount: 52.38, size: 'small' },
   { name: 'Insurance', amount: 44.29, size: 'small' },
   { name: 'Other', amount: 44.29, size: 'small' },
-]; 
+];
+
+// Budget data for different months
+export const budgetData = {
+  "January 2025": [
+    { id: "1", name: "Housing", budget: 1200, spent: 1200 },
+    { id: "2", name: "Food", budget: 400, spent: 320 },
+    { id: "3", name: "Transportation", budget: 200, spent: 180 },
+    { id: "4", name: "Entertainment", budget: 150, spent: 200 },
+    { id: "5", name: "Utilities", budget: 120, spent: 110 },
+    { id: "6", name: "Healthcare", budget: 100, spent: 75 },
+    { id: "7", name: "Shopping", budget: 200, spent: 250 },
+    { id: "8", name: "Savings", budget: 500, spent: 500 },
+  ],
+  "December 2024": [
+    { id: "1", name: "Housing", budget: 1200, spent: 1200 },
+    { id: "2", name: "Food", budget: 400, spent: 450 },
+    { id: "3", name: "Transportation", budget: 200, spent: 150 },
+    { id: "4", name: "Entertainment", budget: 150, spent: 300 },
+    { id: "5", name: "Utilities", budget: 120, spent: 130 },
+    { id: "6", name: "Healthcare", budget: 100, spent: 50 },
+    { id: "7", name: "Shopping", budget: 200, spent: 400 },
+    { id: "8", name: "Savings", budget: 500, spent: 200 },
+  ],
+  "November 2024": [
+    { id: "1", name: "Housing", budget: 1200, spent: 1200 },
+    { id: "2", name: "Food", budget: 400, spent: 380 },
+    { id: "3", name: "Transportation", budget: 200, spent: 220 },
+    { id: "4", name: "Entertainment", budget: 150, spent: 120 },
+    { id: "5", name: "Utilities", budget: 120, spent: 125 },
+    { id: "6", name: "Healthcare", budget: 100, spent: 80 },
+    { id: "7", name: "Shopping", budget: 200, spent: 180 },
+    { id: "8", name: "Savings", budget: 500, spent: 600 },
+  ],
+}; 

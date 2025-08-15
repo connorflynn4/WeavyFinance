@@ -3,14 +3,14 @@
 import { LayoutDashboard, CreditCard, RefreshCcw, Wallet, ClipboardList, Target, LineChart, ArrowLeftRight, Settings as SettingsIcon, HelpCircle } from "lucide-react";
 
 interface SidebarProps {
-  onViewChange: (view: 'dashboard' | 'exchanges' | 'cards' | 'transactions' | 'investments' | 'goals') => void;
-  activeView: 'dashboard' | 'exchanges' | 'cards' | 'transactions' | 'investments' | 'goals';
+  onViewChange: (view: 'dashboard' | 'exchanges' | 'cards' | 'transactions' | 'investments' | 'goals' | 'cashflow' | 'budget') => void;
+  activeView: 'dashboard' | 'exchanges' | 'cards' | 'transactions' | 'investments' | 'goals' | 'cashflow' | 'budget';
   isMobileMenuOpen?: boolean;
   onMobileMenuToggle?: () => void;
 }
 
 const SidebarComponent = ({ onViewChange, activeView, isMobileMenuOpen, onMobileMenuToggle }: SidebarProps) => {
-  const handleNavClick = (view: 'dashboard' | 'exchanges' | 'cards' | 'transactions' | 'investments' | 'goals') => {
+  const handleNavClick = (view: 'dashboard' | 'exchanges' | 'cards' | 'transactions' | 'investments' | 'goals' | 'cashflow' | 'budget') => {
     onViewChange(view);
     // Close mobile menu when navigation item is clicked
     if (onMobileMenuToggle) {
@@ -107,13 +107,27 @@ const SidebarComponent = ({ onViewChange, activeView, isMobileMenuOpen, onMobile
                 </button>
               </li>
               <li>
-                <button className="w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200">
+                <button
+                  onClick={() => handleNavClick('cashflow')}
+                  className={`w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                    activeView === 'cashflow'
+                      ? 'bg-teal-600 text-white'
+                      : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                  }`}
+                >
                   <Wallet className="w-4 h-4 mr-2 lg:mr-3" />
                   Cash Flow
                 </button>
               </li>
               <li>
-                <button className="w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:bg-gray-800 hover:text-white transition-colors duration-200">
+                <button
+                  onClick={() => handleNavClick('budget')}
+                  className={`w-full flex items-center px-2 lg:px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                    activeView === 'budget'
+                      ? 'bg-teal-600 text-white'
+                      : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                  }`}
+                >
                   <ClipboardList className="w-4 h-4 mr-2 lg:mr-3" />
                   Budget
                 </button>

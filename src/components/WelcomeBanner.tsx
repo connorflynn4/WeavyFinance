@@ -7,7 +7,7 @@ const WelcomeBanner = () => {
       <div className="h-1 w-full bg-gradient-to-r from-emerald-400 via-teal-400 to-indigo-400" />
 
       {/* Content */}
-      <div className="p-4 flex items-center justify-between">
+      <div className="p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
           <h2 className="text-base font-semibold text-gray-900">Welcome to Weavy</h2>
           <p className="text-xs text-gray-500 mt-1">Now it's easier than ever to get started with Weavy.</p>

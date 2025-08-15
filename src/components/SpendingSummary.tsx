@@ -12,8 +12,8 @@ interface SpendingSummaryProps {
 
 const SpendingSummary = ({ spendingCategories }: SpendingSummaryProps) => {
   return (
-    <div className="bg-white rounded-xl shadow p-4">
-      <h3 className="text-base font-bold text-gray-800 mb-3">Spending Summary</h3>
+    <div className="bg-white rounded-xl shadow p-3 sm:p-4">
+      <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-3">Spending Summary</h3>
 
       <div className="grid grid-cols-2 gap-2">
         {spendingCategories.map((category, index) => (
@@ -24,12 +24,12 @@ const SpendingSummary = ({ spendingCategories }: SpendingSummaryProps) => {
             }`}
             style={{
               backgroundColor: `rgba(20, 184, 166, ${0.2 - index * 0.03})`,
-              minHeight: category.size === 'large' ? '100px' : '60px',
+              minHeight: category.size === 'large' ? '80px sm:100px' : '50px sm:60px',
             }}
           >
             <div>
-              <p className="font-medium text-gray-800 text-sm">{category.name}</p>
-              <p className="text-gray-600 text-sm">${category.amount.toFixed(2)}</p>
+              <p className="font-medium text-gray-800 text-xs sm:text-sm">{category.name}</p>
+              <p className="text-gray-600 text-xs sm:text-sm">${category.amount.toFixed(2)}</p>
             </div>
             <div className="text-right">
               <span className="text-xs text-gray-500">

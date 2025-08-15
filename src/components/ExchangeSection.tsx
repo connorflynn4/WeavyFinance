@@ -155,14 +155,14 @@ const ExchangeSection = () => {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow p-4">
-      <h3 className="text-base font-bold text-gray-800 mb-3">Exchange</h3>
+    <div className="bg-white rounded-xl shadow p-3 sm:p-4">
+      <h3 className="text-sm sm:text-base font-bold text-gray-800 mb-3">Exchange</h3>
 
       {/* Exchange Rate Display */}
       <div className="mb-3 p-2 bg-gray-50 rounded-lg">
         <p className="text-xs text-gray-600">Conversion Rate</p>
         <div className="flex justify-between items-center mt-1">
-          <p className="font-medium text-sm">
+          <p className="font-medium text-xs sm:text-sm">
             1 {fromCurrency.code} = {exchangeRate?.rate.toFixed(6)} {toCurrency.code}
           </p>
           <button 
@@ -191,20 +191,20 @@ const ExchangeSection = () => {
                 onClick={() => setShowFromDropdown(!showFromDropdown)}
                 className="flex items-center bg-gray-100 rounded-l-lg px-2 py-1 border border-r-0 border-gray-300 hover:bg-gray-200 transition-colors"
               >
-                <span className="mr-1 text-sm">{fromCurrency.flag}</span>
-                <span className="text-sm">{fromCurrency.code}</span>
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="mr-1 text-xs sm:text-sm">{fromCurrency.flag}</span>
+                <span className="text-xs sm:text-sm">{fromCurrency.code}</span>
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
               
               {showFromDropdown && (
-                <div className="absolute z-10 mt-1 w-48 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-auto">
+                <div className="absolute z-10 mt-1 w-40 sm:w-48 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-auto">
                   {currencies.map((currency) => (
                     <button
                       key={currency.code}
                       onClick={() => handleFromCurrencyChange(currency)}
-                      className="w-full flex items-center px-3 py-2 text-sm hover:bg-gray-100 text-left"
+                      className="w-full flex items-center px-2 sm:px-3 py-2 text-xs sm:text-sm hover:bg-gray-100 text-left"
                     >
                       <span className="mr-2">{currency.flag}</span>
                       <span className="font-medium">{currency.code}</span>
@@ -218,7 +218,7 @@ const ExchangeSection = () => {
               type="number"
               value={fromAmount}
               onChange={(e) => handleFromAmountChange(Number(e.target.value))}
-              className="flex-1 rounded-r-lg border border-gray-300 px-2 py-1 text-sm"
+              className="flex-1 rounded-r-lg border border-gray-300 px-2 py-1 text-xs sm:text-sm"
               placeholder="0.00"
               min="0"
               step="0.01"
@@ -238,7 +238,7 @@ const ExchangeSection = () => {
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="h-4 w-4 sm:h-5 sm:w-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -262,20 +262,20 @@ const ExchangeSection = () => {
                 onClick={() => setShowToDropdown(!showToDropdown)}
                 className="flex items-center bg-gray-100 rounded-l-lg px-2 py-1 border border-r-0 border-gray-300 hover:bg-gray-200 transition-colors"
               >
-                <span className="mr-1 text-sm">{toCurrency.flag}</span>
-                <span className="text-sm">{toCurrency.code}</span>
-                <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <span className="mr-1 text-xs sm:text-sm">{toCurrency.flag}</span>
+                <span className="text-xs sm:text-sm">{toCurrency.code}</span>
+                <svg className="w-3 h-3 sm:w-4 sm:h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
               
               {showToDropdown && (
-                <div className="absolute z-10 mt-1 w-48 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-auto">
+                <div className="absolute z-10 mt-1 w-40 sm:w-48 bg-white border border-gray-300 rounded-lg shadow-lg max-h-60 overflow-auto">
                   {currencies.map((currency) => (
                     <button
                       key={currency.code}
                       onClick={() => handleToCurrencyChange(currency)}
-                      className="w-full flex items-center px-3 py-2 text-sm hover:bg-gray-100 text-left"
+                      className="w-full flex items-center px-2 sm:px-3 py-2 text-xs sm:text-sm hover:bg-gray-100 text-left"
                     >
                       <span className="mr-2">{currency.flag}</span>
                       <span className="font-medium">{currency.code}</span>
@@ -289,7 +289,7 @@ const ExchangeSection = () => {
               type="number"
               value={toAmount}
               onChange={(e) => handleToAmountChange(Number(e.target.value))}
-              className="flex-1 rounded-r-lg border border-gray-300 px-2 py-1 text-sm"
+              className="flex-1 rounded-r-lg border border-gray-300 px-2 py-1 text-xs sm:text-sm"
               placeholder="0.00"
               min="0"
               step="0.01"
@@ -320,11 +320,11 @@ const ExchangeSection = () => {
         <button 
           onClick={handleExchange}
           disabled={isLoading || typeof fromAmount !== 'number' || fromAmount <= 0}
-          className="w-full bg-teal-500 hover:bg-teal-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm flex items-center justify-center"
+          className="w-full bg-teal-500 hover:bg-teal-600 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-medium py-2 px-4 rounded-lg transition-colors text-xs sm:text-sm flex items-center justify-center"
         >
           {isLoading ? (
             <>
-              <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <svg className="animate-spin -ml-1 mr-2 h-3 w-3 sm:h-4 sm:w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                 <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                 <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
               </svg>

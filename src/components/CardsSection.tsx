@@ -6,10 +6,10 @@ const CardsSection = () => {
   const [spendLimitEnabled, setSpendLimitEnabled] = useState(true);
 
   return (
-    <div className="bg-white rounded-xl shadow p-4">
+    <div className="bg-white rounded-xl shadow p-3 sm:p-4">
       <div className="flex justify-between items-center mb-3">
-        <h3 className="text-base font-bold text-gray-800">Cards</h3>
-        <button className="text-gray-500 hover:text-gray-700">
+        <h3 className="text-sm sm:text-base font-bold text-gray-800">Cards</h3>
+        <button className="text-gray-500 hover:text-gray-700 p-1">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
             <path
               fillRule="evenodd"
@@ -21,33 +21,33 @@ const CardsSection = () => {
       </div>
 
       <div className="bg-gradient-to-r from-teal-500 to-teal-600 rounded-lg p-3 text-white mb-3">
-        <div className="flex justify-between items-start mb-3">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start mb-3 gap-2">
           <div>
             <p className="text-xs opacity-80">Marteen Praz</p>
-            <p className="text-base font-bold mt-1">9283 0293</p>
+            <p className="text-sm sm:text-base font-bold mt-1">9283 0293</p>
           </div>
-          <div className="flex items-center">
-            <span className="text-xs bg-teal-700 px-2 py-1 rounded mr-2">Physical</span>
+          <div className="flex items-center gap-2">
+            <span className="text-xs bg-teal-700 px-2 py-1 rounded">Physical</span>
             <span className="text-xs bg-green-500 px-2 py-1 rounded">Active</span>
           </div>
         </div>
 
-        <div className="flex justify-between items-end">
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-end gap-2">
           <div>
             <p className="text-xs opacity-80">Expiry</p>
             <p className="font-medium">09/30</p>
           </div>
-          <div className="text-right">
+          <div className="text-left sm:text-right">
             <p className="text-xs opacity-80">Balance</p>
             <p className="font-bold">$10,372.92</p>
           </div>
         </div>
       </div>
 
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
         <div>
           <p className="text-xs text-gray-600">Spend Limit</p>
-          <p className="text-sm font-medium">$12,372.92 per month</p>
+          <p className="text-xs sm:text-sm font-medium">$12,372.92 per month</p>
         </div>
         <div className="flex items-center">
           <span className="text-xs text-gray-600 mr-2">{spendLimitEnabled ? 'On' : 'Off'}</span>

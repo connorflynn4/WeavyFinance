@@ -135,14 +135,14 @@ const BalanceChart = ({ balanceData }: BalanceChartProps) => {
   };
 
   return (
-    <div className="lg:col-span-2 bg-white rounded-xl shadow p-4 h-full">
-      <div className="flex justify-between items-center mb-4">
+    <div className="lg:col-span-2 bg-white rounded-xl shadow p-3 sm:p-4 h-full">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-4 gap-3">
         <h3 className="text-lg font-bold text-gray-800">Balance</h3>
-        <div className="flex space-x-2">
+        <div className="flex space-x-1 sm:space-x-2">
           {(['weekly', 'monthly', 'yearly'] as const).map((tab) => (
             <button
               key={tab}
-              className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
+              className={`px-2 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium transition-colors ${
                 activeTab === tab
                   ? 'bg-teal-100 text-teal-700'
                   : 'text-gray-500 hover:bg-gray-100'
@@ -156,13 +156,13 @@ const BalanceChart = ({ balanceData }: BalanceChartProps) => {
       </div>
 
       <div className="mb-3">
-        <p className="text-2xl font-bold text-gray-800">
+        <p className="text-xl sm:text-2xl font-bold text-gray-800">
           ${currentBalance.toLocaleString()}
         </p>
-        <p className={`text-sm flex items-center mt-1 ${percentageChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+        <p className={`text-xs sm:text-sm flex items-center mt-1 ${percentageChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
           <svg 
             xmlns="http://www.w3.org/2000/svg" 
-            className={`h-4 w-4 mr-1 ${percentageChange >= 0 ? '' : 'rotate-180'}`} 
+            className={`h-3 w-3 sm:h-4 sm:w-4 mr-1 ${percentageChange >= 0 ? '' : 'rotate-180'}`} 
             viewBox="0 0 20 20" 
             fill="currentColor"
           >
@@ -173,7 +173,7 @@ const BalanceChart = ({ balanceData }: BalanceChartProps) => {
       </div>
 
       {/* Chart */}
-      <div className="h-48 relative">
+      <div className="h-40 sm:h-48 relative">
         <Line data={chartData} options={chartOptions} />
       </div>
     </div>

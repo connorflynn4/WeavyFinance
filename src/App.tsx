@@ -23,19 +23,29 @@ type View = 'dashboard' | 'exchanges' | 'cards' | 'transactions' | 'investments'
 
 const FinancialDashboard = () => {
   const [activeView, setActiveView] = useState<View>('dashboard');
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const handleMobileMenuToggle = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   return (
     <div className="flex min-h-screen bg-gray-50">
       {/* Sidebar */}
-      <Sidebar onViewChange={setActiveView} activeView={activeView} />
+      <Sidebar 
+        onViewChange={setActiveView} 
+        activeView={activeView} 
+        isMobileMenuOpen={isMobileMenuOpen}
+        onMobileMenuToggle={handleMobileMenuToggle}
+      />
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <Header />
+        <Header onMobileMenuToggle={handleMobileMenuToggle} />
 
         {/* Main Content Area */}
-        <main className="flex-1 overflow-y-auto p-4 bg-gray-50">
+        <main className="flex-1 overflow-y-auto p-2 sm:p-4 bg-gray-50">
         {activeView === 'dashboard' && (
           <>
             {/* Welcome Banner */}

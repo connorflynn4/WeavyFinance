@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ArrowRight, Shield, Zap, TrendingUp, BarChart3, Lock, CheckCircle2, Star, ChevronRight, Upload, FileText, Building2, Sparkles, Users, Briefcase } from "lucide-react";
+import { ArrowRight, Shield, Zap, TrendingUp, BarChart3, Lock, CheckCircle2, Star, ChevronRight, Upload, FileText, Building2, Sparkles, Users, Briefcase, Menu, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const LandingPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isAnnual, setIsAnnual] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const router = useRouter();
 
   useEffect(() => {
@@ -17,6 +18,16 @@ const LandingPage = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const navigateToDashboard = () => {
     router.push("/dashboard");
   };
@@ -25,55 +36,123 @@ const LandingPage = () => {
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 text-white">
       {/* Navigation */}
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-gray-900/80 backdrop-blur-lg border-b border-gray-800" : "bg-transparent"
+        isScrolled ? "bg-gray-900/80 backdrop-blur-lg border-b border-gray-800" : "bg-gray-900/40 backdrop-blur-sm"
       }`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center">
-                <span className="text-white font-bold text-sm">W</span>
+          <div className="flex items-center justify-between h-14 sm:h-16">
+            {/* Logo */}
+            <div className="flex items-center space-x-2 min-w-0 flex-shrink-0">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center flex-shrink-0">
+                <span className="text-white font-bold text-xs sm:text-sm">W</span>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent">
-                Weavy Finance
+              <span className="text-base sm:text-xl font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent whitespace-nowrap">
+                Weavy<span className="hidden sm:inline"> Finance</span>
               </span>
             </div>
-            <div className="hidden md:flex items-center space-x-8">
-              <a href="#features" className="text-gray-300 hover:text-white transition-colors">Features</a>
-              <a href="#security" className="text-gray-300 hover:text-white transition-colors">Security</a>
-              <a href="#testimonials" className="text-gray-300 hover:text-white transition-colors">Reviews</a>
+
+            {/* Desktop Navigation Links */}
+            <div className="hidden lg:flex items-center space-x-8">
+              <a href="#features" className="text-gray-300 hover:text-white transition-colors text-sm">Features</a>
+              <a href="#security" className="text-gray-300 hover:text-white transition-colors text-sm">Security</a>
+              <a href="#testimonials" className="text-gray-300 hover:text-white transition-colors text-sm">Reviews</a>
             </div>
-            <div className="flex items-center space-x-4">
+
+            {/* Desktop CTA Buttons */}
+            <div className="hidden md:flex items-center space-x-3">
               <button
                 onClick={navigateToDashboard}
-                className="text-gray-300 hover:text-white transition-colors text-sm font-medium"
+                className="text-gray-300 hover:text-white transition-colors text-sm font-medium px-2 py-1.5"
               >
                 Sign In
               </button>
               <button
                 onClick={navigateToDashboard}
-                className="px-4 py-2 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-medium text-sm transition-all duration-200 shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40"
+                className="px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-medium text-xs sm:text-sm transition-all duration-200 shadow-lg shadow-teal-500/25 hover:shadow-teal-500/40 whitespace-nowrap"
               >
-                Dashboard Preview
+                <span className="hidden sm:inline">Dashboard Preview</span>
+                <span className="sm:hidden">Preview</span>
               </button>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 text-gray-300 hover:text-white transition-colors"
+              aria-label="Toggle menu"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
           </div>
+
+          {/* Mobile Menu */}
+          {isMobileMenuOpen && (
+            <div className="md:hidden border-t border-gray-800 py-4 animate-fade-in">
+              <div className="flex flex-col space-y-3">
+                <a
+                  href="#features"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-300 hover:text-white transition-colors px-2 py-2"
+                >
+                  Features
+                </a>
+                <a
+                  href="#security"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-300 hover:text-white transition-colors px-2 py-2"
+                >
+                  Security
+                </a>
+                <a
+                  href="#testimonials"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-gray-300 hover:text-white transition-colors px-2 py-2"
+                >
+                  Reviews
+                </a>
+                <div className="pt-2 border-t border-gray-800 space-y-2">
+                  <button
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      navigateToDashboard();
+                    }}
+                    className="w-full text-left text-gray-300 hover:text-white transition-colors px-2 py-2"
+                  >
+                    Sign In
+                  </button>
+                  <button
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      navigateToDashboard();
+                    }}
+                    className="w-full px-4 py-2.5 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-medium text-sm transition-all duration-200 shadow-lg shadow-teal-500/25"
+                  >
+                    Dashboard Preview
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 sm:pt-24 pb-20">
         {/* Animated gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 via-cyan-500/10 to-blue-500/10 animate-pulse" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(20,184,166,0.3),transparent_50%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(6,182,212,0.3),transparent_50%)]" />
         
-        {/* Floating orbs */}
-        <div className="absolute top-20 left-10 w-72 h-72 bg-teal-500/20 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        {/* Floating orbs - smaller on mobile */}
+        <div className="absolute top-20 left-4 sm:left-10 w-48 h-48 sm:w-72 sm:h-72 bg-teal-500/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-20 right-4 sm:right-10 w-64 h-64 sm:w-96 sm:h-96 bg-cyan-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="space-y-8 animate-fade-in">
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
+          <div className="space-y-6 sm:space-y-8 animate-fade-in max-w-screen-md mx-auto">
+            <h1 className="text-[clamp(2rem,8vw,4.5rem)] sm:text-5xl lg:text-7xl font-bold leading-[1.1] sm:leading-tight px-2">
               <span className="bg-gradient-to-r from-white via-teal-100 to-cyan-100 bg-clip-text text-transparent">
                 Finance, redefined
               </span>
@@ -82,24 +161,27 @@ const LandingPage = () => {
                 for clarity and control.
               </span>
             </h1>
-            <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-xl lg:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed px-4 sm:px-6">
               Your all-in-one finance platform built for insight, automation, and growth — <span className="text-teal-300 font-semibold">without linking your bank account.</span>
             </p>
-            <div className="mt-6 inline-flex items-center space-x-2 px-6 py-3 rounded-full bg-teal-500/10 border border-teal-500/30 backdrop-blur-sm">
-              <Upload className="w-5 h-5 text-teal-400" />
-              <span className="text-teal-300 font-medium">No bank linking required — just upload your statement</span>
+            <div className="mt-4 sm:mt-6 inline-flex items-center space-x-2 px-4 sm:px-6 py-2.5 sm:py-3 rounded-full bg-teal-500/10 border border-teal-500/30 backdrop-blur-sm max-w-[90%] sm:max-w-none">
+              <Upload className="w-4 h-4 sm:w-5 sm:h-5 text-teal-400 flex-shrink-0" />
+              <span className="text-teal-300 font-medium text-xs sm:text-sm text-center">
+                <span className="hidden sm:inline">No bank linking required — just upload your statement</span>
+                <span className="sm:hidden">Upload statements, no linking needed</span>
+              </span>
             </div>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 sm:pt-4 px-4">
               <button
                 onClick={navigateToDashboard}
-                className="group px-8 py-4 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-semibold text-lg transition-all duration-200 shadow-xl shadow-teal-500/30 hover:shadow-teal-500/50 flex items-center space-x-2"
+                className="group w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-400 hover:to-cyan-400 text-white font-semibold text-base sm:text-lg transition-all duration-200 shadow-xl shadow-teal-500/30 hover:shadow-teal-500/50 flex items-center justify-center space-x-2 min-h-[44px]"
               >
                 <span>View Dashboard Preview</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
               </button>
               <button
                 onClick={navigateToDashboard}
-                className="px-8 py-4 rounded-full border-2 border-gray-700 hover:border-gray-600 text-white font-semibold text-lg transition-all duration-200"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-full border-2 border-gray-700 hover:border-gray-600 text-white font-semibold text-base sm:text-lg transition-all duration-200 min-h-[44px]"
               >
                 Explore Dashboard
               </button>
@@ -108,7 +190,7 @@ const LandingPage = () => {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
           <ChevronRight className="w-6 h-6 text-gray-400 rotate-90" />
         </div>
       </section>

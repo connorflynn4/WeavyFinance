@@ -1,6 +1,6 @@
 import React from 'react'
-import FinancialDashboard from '../src/App'
+import LandingPage from '../src/components/LandingPage'
 
 export default function Home() {
-  return <FinancialDashboard />
+  return <LandingPage />
 } 

@@ -1,5 +1,6 @@
 export { default as BalanceChart } from './BalanceChart';
 export { default as BudgetPage } from './BudgetPage';
+export { default as LandingPage } from './LandingPage';
 export { default as CardsPage } from './CardsPage';
 export { default as CardsSection } from './CardsSection';
 export { default as CashFlowPage } from './CashFlowPage';

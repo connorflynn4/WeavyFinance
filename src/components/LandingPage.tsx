@@ -32,6 +32,10 @@ const LandingPage = () => {
     router.push("/dashboard");
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800 text-white">
       {/* Navigation */}
@@ -41,14 +45,18 @@ const LandingPage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14 sm:h-16">
             {/* Logo */}
-            <div className="flex items-center space-x-2 min-w-0 flex-shrink-0">
+            <button
+              onClick={scrollToTop}
+              className="flex items-center space-x-2 min-w-0 flex-shrink-0 hover:opacity-80 transition-opacity cursor-pointer"
+              aria-label="Go to home"
+            >
               <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center flex-shrink-0">
                 <span className="text-white font-bold text-xs sm:text-sm">W</span>
               </div>
               <span className="text-base sm:text-xl font-bold bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-transparent whitespace-nowrap">
                 Weavy<span className="hidden sm:inline"> Finance</span>
               </span>
-            </div>
+            </button>
 
             {/* Desktop Navigation Links */}
             <div className="hidden lg:flex items-center space-x-8">
